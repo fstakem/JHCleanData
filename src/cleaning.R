@@ -10,22 +10,43 @@
 # -----------------------------------------------------------------------------------------------
 
 
-# Merge the raw data
+export_to_csv <- function(path, data)
+{
+    write.csv(data, path)
+}
+
+calculate_average <- function(data)
+{
+    data_names <- names(data)
+    data_names <- data_names[3:length(data_names)]
+    
+    average_data <- lapply(data_names, function(x)
+    {
+        aggregated_data <- aggregate(data[x], list(data$subject_id, data$activity), mean)
+        aggregated_data[x]
+    })
+    
+    labels <- aggregate(data["tBodyAcc_mean_X"], list(data$subject_id, data$activity), mean)
+    labels <- data.frame(labels[1], labels[2])
+    final_data <- cbind(labels, average_data)
+    colnames(final_data)[1] <- "subject_id"
+    colnames(final_data)[2] <- "activity"
+    
+    return(final_data)
+}
+
 merge_all_data <- function(root_path)
 {
-    print("--- Starting merging data ---")
-    
-    # Paths
     paths = c( file.path(root_path, 'test', fsep = .Platform$file.sep), file.path(root_path, 'train', fsep = .Platform$file.sep) )
+    all_data = data.frame()
     
     for(p in paths)
     {
-        print( paste('Setting path:', p ) )
         combined_data <- merge_data_set(root_path, p)
+        all_data <- rbind(all_data, combined_data)
     }
     
-    
-    print("--- Finished merging data ---")
+    return(all_data)
 }
 
 merge_data_set <- function(root_path, path)
@@ -37,8 +58,9 @@ merge_data_set <- function(root_path, path)
     feature_data <- get_features(path)
     feature_labels <- get_feature_labels(root_path)
     feature_data <- extract_features(feature_data, feature_labels)
+    merged_data <- cbind(subject_data, activity_data, feature_data)
     
-    cbind(subject_data, activity_data, feature_data)
+    return(merged_data)
 }
 
 get_subject <- function(path)
@@ -116,14 +138,6 @@ extract_features <- function(feature_data, feature_labels)
     names(extracted_data) <- extracted_names
     
     return(extracted_data)
-}
-
-# Extract the mean and std
-extract_mean_std <- function()
-{
-    print("--- Starting mean and std extraction ---")
-    
-    print("--- Finished mean and std extraction ---")
 }
 
 # Create final tidy data set

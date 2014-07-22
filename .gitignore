@@ -35,6 +35,7 @@ local.properties
 .project
 .pydevproject
 .settings/
+.Rhistory
 
 # Packages #
 ############
@@ -53,6 +54,7 @@ local.properties
 ################
 *.*~
 *.*#
+*.swp
 
 # Logs and databases #
 ######################

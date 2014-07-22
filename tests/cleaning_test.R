@@ -16,11 +16,50 @@ library('RUnit')
 # Source
 source('../src/cleaning.R')
 
-# Merge the raw data
+# This is a manual test
+test_export_to_csv <- function()
+{
+    output_path <- '../data'
+    input_path <- '../raw_data'
+    merged_data <- merge_all_data(input_path)
+    
+    average_data <- calculate_average(merged_data)
+    export_to_csv(output_path, average_data)
+}
+
+test_calculate_average <- function()
+{
+    path <- '../raw_data'
+    merged_data <- merge_all_data(path)
+    
+    average_data <- calculate_average(merged_data)
+    
+    checkEquals( nrow(average_data), 180)
+    checkEquals( ncol(average_data), 88)
+}
+
 test_merge_all_data <- function()
 {
     path <- '../raw_data'
-    merge_data(path)
+    merged_data <- merge_all_data(path)
+    
+    checkEquals( nrow(merged_data), 10299)
+    checkEquals( ncol(merged_data), 88)
+}
+
+test_merge_data_set <- function()
+{
+    root_path <- '../raw_data'
+    
+    path <- '../raw_data/test'
+    merged_data <- merge_data_set(root_path, path)
+    checkEquals( nrow(merged_data), 2947)
+    checkEquals( ncol(merged_data), 88)
+    
+    path <- '../raw_data/train'
+    merged_data <- merge_data_set(root_path, path)
+    checkEquals( nrow(merged_data), 7352)
+    checkEquals( ncol(merged_data), 88)
 }
 
 test_get_subject <- function()
@@ -120,15 +159,15 @@ test_extract_features <- function()
 }
 
 # Run tests
-#test_get_subject()
-#test_get_activity()
-#test_get_activity_labels()
-#test_translate_activity()
-#test_get_features()
-#test_get_feature_labels()
-#test_extract_features()
-
-# TODO ->
+test_get_subject()
+test_get_activity()
+test_get_activity_labels()
+test_translate_activity()
+test_get_features()
+test_get_feature_labels()
+test_extract_features()
+test_merge_data_set()
 test_merge_all_data()
-
+test_calculate_average()
+test_export_to_csv()
 
