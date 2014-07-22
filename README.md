@@ -31,4 +31,11 @@ The goal of the project was to collect the feature data from the "Human Activity
 | x                            |  y                        | float                 |
 | x                            |  y                        | float                 |
 | x                            |  y                        | float                 |
+| x                            |  y                        | float                 |
+| x                            |  y                        | float                 |
+| x                            |  y                        | float                 |
+| x                            |  y                        | float                 |
+| x                            |  y                        | float                 |
+| x                            |  y                        | float                 |
+| x                            |  y                        | float                 |
 enumerated action: (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
