@@ -19,10 +19,9 @@ source('../src/cleaning.R')
 # This is a manual test
 test_export_to_csv <- function()
 {
-    output_path <- '../data'
+    output_path <- '../data/average_human_activity.txt'
     input_path <- '../raw_data'
     merged_data <- merge_all_data(input_path)
-    
     average_data <- calculate_average(merged_data)
     export_to_csv(output_path, average_data)
 }
