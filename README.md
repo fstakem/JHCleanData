@@ -1,8 +1,8 @@
 JHCleanData
 ===========
 
-By: Fredrick Stakem
-Date: 7.22.14
+By: Fredrick Stakem  
+Date: 7.22.14  
 
 ## Abstract
 This project was undertaken for the Data Science class 'Getting and Cleaning Data' from John Hopkins offered through Coursera. The R code takes data from the "Human Activity Recognition Using Smartphones Dataset" and processes it into a a tidy data set as per the project instructions. The raw data can be found on the course web site and in the folder '/raw_data' in this project. More details about the processing can be found below.
@@ -12,7 +12,7 @@ The goal of the project was to collect the feature data from the "Human Activity
 
 ## Recipe
 1. Get the raw data named "Human Activity Recognition Using Smartphones Dataset"
-2. If the raw data is compressed then uncompress it keeping the original file structure
+2. If the raw data is compressed then uncompress it keeping the original directory structure
 3. In the script run_analysis.R set the 'input_path' variable to the root directory of the raw data
 4. In the script run_analysis.R set the 'output_path' variable to the desired output file name
 5. Run the script run_analysis.R with the previous specified variable set
