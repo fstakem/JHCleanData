@@ -11,7 +11,13 @@ This project was undertaken for the Data Science class 'Getting and Cleaning Dat
 The goal of the project was to collect the feature data from the "Human Activity Recognition Using Smartphones Dataset" and to provide the mean for a subset of the features. The features were to be grouped by a subjects's actions. Since there where 30 subjects and 6 actions this called called for 180 seperate groupings. Once the data was grouped per the subject's actions the mean was taken only of the features that were a mean or a std. In short this created a mean for each of the separate feature vectors that were either a mean or a std.
 
 ## Recipe
-
+1. Get the raw data named "Human Activity Recognition Using Smartphones Dataset"
+2. If the raw data is compressed then uncompress it keeping the original file structure
+3. In the script run_analysis.R set the 'input_path' variable to the root directory of the raw data
+4. In the script run_analysis.R set the 'output_path' variable to the desired output file name
+5. Run the script run_analysis.R with the previous specified variable set
+6. The output data should be encoded as a csv file
+ 
 
 ## Codebook
 All of the new data except the first two value is the mean of the original data values.
